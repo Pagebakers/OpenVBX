@@ -370,7 +370,23 @@ class CI_Template {
 		 }
 	  }
 	  
-	  $content = $this->CI->load->view($view, $data, TRUE);
+    // Load theme view if it exists
+    if (isset($data['theme']))
+    {
+      $path = str_replace(EXT, '', dirname(APPPATH) . ASSET_ROOT . '/themes/' . $data['theme'] . '/'. $view) . EXT;
+      if(file_exists($path))
+      {
+        extract($data);
+        ob_start();
+        include ($path);
+        $content = ob_get_contents();
+        ob_end_clean();
+      }
+    }
+    
+    if(!$content) {
+      $content = $this->CI->load->view($view, $data, TRUE);
+    }
 	  $this->write($region, $content, $overwrite);
 
    }
