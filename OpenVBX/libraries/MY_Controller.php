@@ -77,10 +77,13 @@ class MY_Controller extends Controller
 		$this->load->model('vbx_plugin_store');
 		$this->load->helper('file');
 		$this->load->helper('twilio');
+		$this->load->helper('language');
 		$this->load->library('session');
 		
 		$this->settings = new VBX_Settings();
-
+    
+    $this->lang->load('openvbx');
+    
 		$rewrite_enabled = intval($this->settings->get('rewrite_enabled', VBX_PARENT_TENANT));
 		if($rewrite_enabled)
 		{

@@ -16,28 +16,28 @@
 			</div>
 			<div id="number-order-local" class="number-type-select">
 				<input type="radio" id="iTypeLocal" name="type" value="local" checked="checked" />
-				<label for="iTypeLocal" class="field-label-inline">Local</label>
+				<label for="iTypeLocal" class="field-label-inline"><?php echo lang('local'); ?></label>
 			</div>
 			<div id="number-order-toll_free" class="number-type-select">
 				<input type="radio" id="iTypeTollFree" name="type" value="toll_free" />
-				<label for="iTypeTollFree" class="field-label-inline">Toll-Free</label>
+				<label for="iTypeTollFree" class="field-label-inline"><?php echo lang('toll_free'); ?></label>
 			</div>
 		</div>
 		
 		<div id="pAreaCode" class="area-code">
 			<fieldset class="vbx-input-complex vbx-input-container">
-				<label for="iAreaCode" class="area-code-label">Area Code</label>
+				<label for="iAreaCode" class="area-code-label"><?php echo lang('area_code'); ?></label>
 				<span id="number-input-wrapper"><span id="area-code-wrapper">1 + (<input type="text" id="iAreaCode" name="area_code" maxlength="5" />)</span> &hellip;</span>
 			</fieldset>
 		</div>
-		<p>Buying a phone number will charge your Twilio account. See <a href="http://www.twilio.com/pricing-signup" target="_blank">Twilio.com</a> for pricing information.</p>
+		<p><?php echo lang('phone_number_pricing_information'); ?></p>
 	</form>
 
 	<div id="completed-order" class="hide">
-		<p>Here's your new number</p>
+		<p><?php echo lang('your_new_number'); ?></p>
 		<p class="number"></p>
-		<a href="" class="setup link-button">Setup Flow</a>
+		<a href="" class="setup link-button"><?php echo lang('setup_flow'); ?></a>
 		<br class="clear" />
-		<p><a href="<?php echo site_url('numbers') ?>" class="skip-link">Setup later</a></p>
+		<p><a href="<?php echo site_url('numbers') ?>" class="skip-link"><?php echo lang('setup_later'); ?></a></p>
 	</div>
 </div>

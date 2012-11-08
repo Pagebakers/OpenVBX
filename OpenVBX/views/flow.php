@@ -4,7 +4,7 @@ if(isset($flow_data)) printf('<script type="text/javascript">var flow_data = %s;
 <div id="prototypes">
 	<?php foreach($applets as $applet): ?>
 	<div id="prototype-<?php echo $applet->id ?>" class="flow-instance content-section <?php echo $applet->id ?> <?php echo $applet->css_class_name ?> hide">
-		<a href="" class="minimize action close-flow-instance" title="Minimize"><span class="replace">Minimize</span></a>
+		<a href="" class="minimize action close-flow-instance" title="<?php echo lang('minimize'); ?>"><span class="replace"><?php echo lang('minimize'); ?></span></a>
 		<h2 class="applet-name"><?php echo $applet->name ?></h2>
 		<div class="settings-panel">
 			<?php echo $applet->render($flow->id); ?>
@@ -43,12 +43,12 @@ if(isset($flow_data)) printf('<script type="text/javascript">var flow_data = %s;
 						<form>
 						<div id="<?php echo $instance->id ?>" rel="<?php echo $applet->id ?>" class="flow-instance <?php echo $applet->id ?> <?php echo $applet->css_class_name ?> hide">
 							<?php if($instance_id != "start"): ?>
-							<a href="" class="minimize action close-flow-instance" title="Minimize"><span class="replace">Minimize</span></a>
+							<a href="" class="minimize action close-flow-instance" title="Minimize"><span class="replace"><?php echo lang('minimize'); ?></span></a>
 							<?php endif; ?>
 							<h2 class="applet-name"><?php echo ($editor_type == 'voice')? $applet->voice_title : (($editor_type == 'sms')? $applet->sms_title : $applet->title); ?></h2>
 							<div class="settings-panel vbx-applet">
 								<?php echo $template ?>
-								<a class="view-source" target="_new" href="<?php echo site_url('twiml/applet/'.$editor_type.'/'.$flow->id.'/'.$instance->id) ?>">View TwiML</a>
+								<a class="view-source" target="_new" href="<?php echo site_url('twiml/applet/'.$editor_type.'/'.$flow->id.'/'.$instance->id) ?>"><?php echo lang('view_twiml'); ?></a>
 							</div><!-- .settings-panel -->
 						</div><!-- .flow-instance -->
 						</form>
@@ -71,7 +71,7 @@ if(isset($flow_data)) printf('<script type="text/javascript">var flow_data = %s;
 
 			<div id="items-toolbox">
 			<?php $type = substr_replace($editor_type, strtoupper(substr($editor_type, 0, 1)), 0, 1); ?>
-			<h3><?php echo $type; ?> Applets</h3>
+			<h3><?php echo $type; ?> <?php echo lang('applets'); ?></h3>
 				<?php foreach($applets as $applet) : ?>
 				<?php if(!$applet->disabled && $applet->visible === true && in_array($editor_type, $applet->type)): ?>
 				<a rel="<?php echo $applet->id ?>" class="applet-item" title="<?php echo $applet->description ?>">
@@ -90,32 +90,32 @@ if(isset($flow_data)) printf('<script type="text/javascript">var flow_data = %s;
 		
 	</div><!-- .content-container -->
 	<div id="dialog-templates" style="display: none">
-		<div id="dialog-app-delete" class="dialog hide" title="Delete applet">
-			<p>Are you sure you want to delete this applet?</p>
+		<div id="dialog-app-delete" class="dialog hide" title="<?php echo lang('delete_applet'); ?>">
+			<p><?php echo lang('delete_applet_confirm'); ?></p>
 		</div>
 
-		<div id="dialog-save-as" class="dialog" title="Save As&hellip;">
-			<p>What would you like to save this flow as?</p>
+		<div id="dialog-save-as" class="dialog" title="<?php echo lang('save_as'); ?>">
+			<p><?php echo lang('save_as_flow'); ?></p>
 			<div class="vbx-input-container">
-				<label class="field-label">Flow Name
+				<label class="field-label"><?php echo lang('flow_name'); ?>
 					<input type="text" class="medium" name="name" value="" />
 				</label>
 			</div>
 		</div>
 
-		<div id="dialog-select-audio" class="dialog hide" title="Select audio">
+		<div id="dialog-select-audio" class="dialog hide" title="<?php echo lang('select_audio'); ?>">
 		</div>
 
-		<div id="dialog-replace-applet" class="dialog hide" title="Replace Applet">
-			<p>Are you sure you wish to replace this applet? All children of this applet will lose their connections.</p>
+		<div id="dialog-replace-applet" class="dialog hide" title="<?php echo lang('replace_applet'); ?>">
+			<p><?php echo lang('replace_applet_confirm'); ?></p>
 		</div>
 
-		<div id="dialog-remove-applet" class="dialog hide" title="Remove Applet">
-			<p>Are you sure you wish to remove this applet? All children of this applet will lose their connections.</p>
+		<div id="dialog-remove-applet" class="dialog hide" title="<?php echo lang('remove_applet'); ?>">
+			<p><?php echo lang('remove_applet_confirm'); ?></p>
 		</div>
 
-		<div id="dialog-close" class="dialog hide" title="Flow Modified">
-			<p>Would you like to save your changes before closing the editor?</p>
+		<div id="dialog-close" class="dialog hide" title="<?php echo lang('flow_modified'); ?>">
+			<p><?php echo lang('flow_modified_confirm'); ?></p>
 		</div>
 	</div>
 </div>

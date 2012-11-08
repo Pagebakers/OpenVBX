@@ -1,5 +1,5 @@
-<div id="dlg_details" title="Number Details" class="dialog">
-	<p>This number has the following URL(s) defined:</p>
+<div id="dlg_details" title="<?php echo lang('number_details'); ?>" class="dialog">
+	<p><?php echo lang('number_urls'); ?></p>
 	<ul class="details"></ul>
-	<p>Assigning a flow here will override these urls.</p>
+	<p><?php echo lang('number_urls_description'); ?></p>
 </div>

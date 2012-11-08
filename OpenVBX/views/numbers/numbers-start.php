@@ -6,7 +6,7 @@
 	}
 ?>
 <div class="<?php echo $class; ?>">
-	<h2>Hey, you don't have any of your own phone numbers!</h2>
-	<p>You can get toll free numbers, or local numbers in nearly any area code, that people can use to call you.</p>
-	<button class="add-button add number"><span>Get a Number</span></button>
+	<h2><?php echo lang('numbers_blank'); ?></h2>
+	<p><?php echo lang('numbers_blank_description'); ?></p>
+	<button class="add-button add number"><span><?php echo lang('get_a_number'); ?></span></button>
 </div>

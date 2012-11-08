@@ -1,10 +1,10 @@
 <div class="vbx-content-main vbx-flows">
 
 		<div class="vbx-content-menu vbx-content-menu-top">
-			<h2 class="vbx-content-heading">Flows</h2>
+			<h2 class="vbx-content-heading"><?php echo lang('flows'); ?></h2>
 			<?php if(!empty($items)): ?>
 			<ul class="flows-menu vbx-menu-items-right">
-				<li class="menu-item"><button class="add-button add-flow" type="button"><span>New Flow</span></button></li>
+				<li class="menu-item"><button class="add-button add-flow" type="button"><span><?php echo lang('new_flow'); ?></span></button></li>
 			</ul>
 			<?php endif; ?>
 			<?php echo $pagination; ?>
@@ -16,11 +16,11 @@
 		<table id="flows-table" class="vbx-items-grid">
 			<thead>
 				<tr class="items-head">
-					<th class="flow-name">Name</th>
-					<th class="flow-numbers">Phone Numbers</th>
-					<th class="flow-voice">Call Flow</th>
-					<th class="flow-sms">SMS Flow</th>
-					<th class="flow-delete">Delete</th>
+					<th class="flow-name"><?php echo lang('name'); ?></th>
+					<th class="flow-numbers"><?php echo lang('phone_numbers'); ?></th>
+					<th class="flow-voice"><?php echo lang('call_flow'); ?></th>
+					<th class="flow-sms"><?php echo lang('sms_flow'); ?></th>
+					<th class="flow-delete"><?php echo lang('delete'); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -30,8 +30,8 @@
 						<span class="flow-name-display"><?php echo $item['name']; ?></span>
 						<span class="flow-name-edit" style="display: none;">
 							<input type="text" name="flow_name" value="<?php echo $item['name'] ?>" data-orig-value="<?php echo $item['name']; ?>"/>
-							<button name="save" value="Save" data-action="/flows/edit/<?php echo $item['id']; ?>" class="submit-button"><span>Save</span></button>
-							<span class="sep">|</span> <a href="#cancel" class="flow-name-edit-cancel">cancel</a>
+							<button name="save" value="Save" data-action="/flows/edit/<?php echo $item['id']; ?>" class="submit-button"><span><?php echo lang('save'); ?></span></button>
+							<span class="sep">|</span> <a href="#cancel" class="flow-name-edit-cancel"><?php echo lang('cancel'); ?></a>
 						</span>
 					</td>
 					<?php if(empty($item['numbers'])): ?>
@@ -39,9 +39,9 @@
 					<?php else: ?>
 					<td><?php echo implode(', ', $item['numbers']); ?></td>
 					<?php endif; ?>
-					<td><a href="<?php echo site_url("flows/edit/{$item['id']}"); ?>#flowline/start"><?php echo is_null($item['voice_data'])? 'Create' : 'Edit' ?> Call Flow</a></td>
-					<td><a href="<?php echo site_url("flows/sms/{$item['id']}"); ?>#flowline/start"><?php echo is_null($item['sms_data'])? 'Create' : 'Edit' ?> SMS Flow</a></td>
-					<td class="flow-delete"><a href="flows/edit/<?php echo $item['id'];?>" class="trash action" title="Delete"><span class="replace">Delete</span></a></td>
+					<td><a href="<?php echo site_url("flows/edit/{$item['id']}"); ?>#flowline/start"><?php echo is_null($item['voice_data'])? lang('create') : lang('edit') ?> <?php echo lang('call_flow'); ?></a></td>
+					<td><a href="<?php echo site_url("flows/sms/{$item['id']}"); ?>#flowline/start"><?php echo is_null($item['sms_data'])? lang('create') : lang('edit') ?> <?php echo lang('sms_flow'); ?></a></td>
+					<td class="flow-delete"><a href="flows/edit/<?php echo $item['id'];?>" class="trash action" title="<?php echo lang('delete'); ?>"><span class="replace"><?php echo lang('delete'); ?></span></a></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>
@@ -52,9 +52,9 @@
 
 		<div class="vbx-content-container">
 				<div class="flows-blank">
-						<h2>Create a new flow.</h2>
-						<p>Flows allow you to control what happens on a call, such as forwarding the call to other people, taking voicemails, playing audio or text to the caller, and more.  You can also build flows to handle SMS messages.</p>
-						<button class="add-button add-flow" type="button"><span>New Flow</span></button>			
+						<h2><?php echo lang('flows_blank'); ?></h2>
+						<p><?php echo lang('flows_blank_description'); ?></p>
+						<button class="add-button add-flow" type="button"><span><?php echo lang('new_flow'); ?></span></button>			
 				</div>
 			<div class="vbx-content-section">
 			</div><!-- .vbx-content-section -->
@@ -65,24 +65,24 @@
 </div><!-- .vbx-content-main -->
 
 <div id="dialog-templates" style="display: none">
-	<div id="dAddFlow" title="Add New Flow" class="dialog">
+	<div id="dAddFlow" title="<?php echo lang('add_new_flow'); ?>" class="dialog">
 		<form action="<?php echo site_url('flows'); ?>" method="post" class="vbx-form">
 			<fieldset class="vbx-input-container">
-			<label class="field-label">Flow Name
+			<label class="field-label"><?php echo lang('flow_name'); ?>
 			<input type="text" name="name" class="medium" />
 			</label>
 			</fieldset>
 		</form>
 	</div>
 
-	<div id="dDeleteFlow" title="Delete Flow?" class="dialog">
-		<p>Are you sure you wish to delete this flow?</p>
+	<div id="dDeleteFlow" title="<?php echo lang('delete_flow'); ?>" class="dialog">
+		<p><?php echo lang('delete_flow_confirm'); ?></p>
 	</div>
 
-	<div id="dCopyFlow" title="Copy Flow" class="dialog">
+	<div id="dCopyFlow" title="<?php echo lang('copy_flow'); ?>" class="dialog">
 		<form action="#" method="post" class="vbx-form">
 			<fieldset class="vbx-input-container">
-			<label class="field-label">Please enter a name for the new flow
+			<label class="field-label"><?php echo lang('copy_flow_name'); ?>
 			<input type="text" name="name" class="medium" />
 			</label>
 			</fieldset>

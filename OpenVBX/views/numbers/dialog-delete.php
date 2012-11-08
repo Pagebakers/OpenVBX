@@ -1,5 +1,4 @@
-<div id="dlg_delete" title="Delete phone number?" class="dialog">
+<div id="dlg_delete" title="<?php echo lang('delete_number'); ?>" class="dialog">
 	<p class="hide error-message"></p>
-	<p>You can not undo this operation and will not be able to retrieve this number again.</p>
-	<p>Are you sure you really want to delete this number?</p>
+	<?php echo lang('delete_number_description'); ?>
 </div>

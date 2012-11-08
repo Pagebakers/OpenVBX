@@ -2,9 +2,9 @@
 	<table class="phone-numbers-table vbx-items-grid" data-type="incoming">
 		<thead>
 			<tr class="items-head">
-				<th class="incoming-number-phone">Phone Number</th>
-				<th class="incoming-number-flow">Call Flow</th>
-				<th class="incoming-number-caps">Capabilities</th>
+				<th class="incoming-number-phone"><?php echo lang('phone_number'); ?></th>
+				<th class="incoming-number-flow"><?php echo lang('call_flow'); ?></th>
+				<th class="incoming-number-caps"><?php echo lang('capabilities'); ?></th>
 				<th class="incoming-number-delete">&nbsp;</th>
 			</tr>
 		</thead>
@@ -31,7 +31,7 @@
 					<?php endif; /* Sandbox */ ?>
 					<?php 
 						echo $item->phone; 
-						echo !empty($item->pin)? ' Pin: '.$item->pin : '';
+						echo !empty($item->pin)? ' '.lang('pin').': '.$item->pin : '';
 					?>
 				</td>
 				<td class="incoming-number-flow">
@@ -54,7 +54,7 @@
 				</td>
 				<td class="incoming-number-delete">
 				<?php if(empty($item->pin)): ?>
-					<a href="numbers/delete/<?php echo $item->id; ?>" class="action trash delete"><span class="replace">Delete</span></a>
+					<a href="numbers/delete/<?php echo $item->id; ?>" class="action trash delete"><span class="replace"><?php echo lang('delete'); ?></span></a>
 				<?php endif; ?>
 				</td>
 			</tr>
@@ -63,7 +63,7 @@
 		else:
 			?>
 			<tr class="items-row null-row">
-				<td colspan="4">You have no numbers assigned to this OpenVBX install.</td>
+				<td colspan="4"><?php echo lang('no_numbers'); ?></td>
 			</tr>
 			<?php
 		endif;

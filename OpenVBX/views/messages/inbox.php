@@ -5,8 +5,8 @@
 		<div class="vbx-content-container">
 			<div class="vbx-content-section">
 				<div class="messages-blank">
-					<h2>No messages in "<?php echo $group_name; ?>"</h2>
-					<p>When a voicemail or text message is received in "<?php echo $group_name ?>", they will show up here.  You can call them back, reply, listen to the message, read the transcription, archive it, and assign it to a user.</p>
+					<h2><?php echo sprintf(lang('messages_blank'), $group_name); ?></h2>
+					<p><?php echo sprintf(lang('messages_blank_description'), $group_name); ?></p>
 				</div>
 			</div><!-- .vbx-content-section -->
 		</div><!-- .vbx-content-container -->
@@ -15,15 +15,15 @@
 			
 		<div class="vbx-content-menu vbx-content-menu-top">
 			<ul class="inbox-menu vbx-menu-items-left">
-				<li class="menu-item"><a href="" class="dropdown-select-button link-button"><span>Select</span></a>
+				<li class="menu-item"><a href="" class="dropdown-select-button link-button"><span><?php echo lang('select'); ?></span></a>
 					<ul class="hide">
-						<li><a class="select select-all" href="">Select All</a></li>
-						<li><a class="select select-none" href="">Select None</a></li>
-						<li><a class="select select-read" href="">Select Read</a></li>
-						<li><a class="select select-unread" href="">Select Unread</a></li>
+						<li><a class="select select-all" href=""><?php echo lang('select_all'); ?></a></li>
+						<li><a class="select select-none" href=""><?php echo lang('select_none'); ?></a></li>
+						<li><a class="select select-read" href=""><?php echo lang('select_read'); ?></a></li>
+						<li><a class="select select-unread" href=""><?php echo lang('select_unred'); ?></a></li>
 					</ul>
 				</li>
-				<li class="menu-item"><a href="" class="delete-button link-button"><span>Delete</span></a></li>
+				<li class="menu-item"><a href="" class="delete-button link-button"><span><?php echo lang('delete'); ?></span></a></li>
 			</ul><!-- .vbx-menu-items -->
 
 			<?php echo $pagination; ?>
@@ -48,19 +48,19 @@
 						<?php endif; ?>
 
 						<div id="quick-call-popup-<?php echo $item['id'] ?>" class="quick-call-popup hide">
-							<a href="" class="close action toggler"><span class="replace">close</span></a>
+							<a href="" class="close action toggler"><span class="replace"><?php echo lang('close'); ?></span></a>
 							<p class="call-to-phone"><?php echo $item['caller'] ?></p>
 							<ul class="caller-id-phone">
-								<li><a href="<?php echo site_url("messages/details/{$item['id']}/callback") ?>" class="call">Call<span class="to hide"><?php echo $item['caller'] ?></span> <span class="callerid hide"><?php echo $item['called'] ?></span><span class="from hide"><?php echo isset($user_numbers[0])? $user_numbers[0]->value : '' ?></span></a></li>
+								<li><a href="<?php echo site_url("messages/details/{$item['id']}/callback") ?>" class="call"><?php echo lang('call'); ?><span class="to hide"><?php echo $item['caller'] ?></span> <span class="callerid hide"><?php echo $item['called'] ?></span><span class="from hide"><?php echo isset($user_numbers[0])? $user_numbers[0]->value : '' ?></span></a></li>
 							</ul>
 						</div>
 
 						<?php if($item['type'] == 'sms'): ?>
 						<div id="quick-sms-popup-<?php echo $item['id'] ?>" class="quick-sms-popup hide">
-							<a href="" class="close action sms-toggler"><span class="replace">close</span></a>
+							<a href="" class="close action sms-toggler"><span class="replace"><?php echo lang('close'); ?></span></a>
 							<input class="sms-message" type="text" name="content" />
 							<span class="count">160</span>
-							<button class="send-button" rel="<?php echo $item['id'] ?>"><span>Send</span></button>
+							<button class="send-button" rel="<?php echo $item['id'] ?>"><span><?php echo lang('send'); ?></span></button>
 							<img class="sending-sms-loader hide" src="<?php echo asset_url('assets/i/ajax-loader.gif')?>" alt="..." />
 							<p class="sms-to-phone hide"><?php echo $item['caller'] ?></p>
 							<p class="from-phone hide"><?php echo $item['called'] ?></p>
@@ -70,7 +70,7 @@
 					<td class="message-playback">
 						<?php if($item['type'] != 'sms'): ?>
 						<a id="play-<?php echo $item['id'] ?>" href="<?php echo site_url("messages/details/{$item['id']}") ?>" class="play playback-button quick-play">
-							<span class="replace">Play</span>
+							<span class="replace"><?php echo lang('play'); ?></span>
 							<span class="call-duration"><?php echo $item['recording_length'] ?></span>
 						</a>
 						<?php endif; ?>
@@ -95,7 +95,7 @@
 						<?php if($item['type'] == 'voice'): ?>
 						<?php if($item['owner_type'] == 'group'): ?>
 
-						<a href="" class="unassigned assign-button"><span class="replace">Assign to</span></a>
+						<a href="" class="unassigned assign-button"><span class="replace"><?php echo lang('assign_to'); ?></span></a>
 						<span class="owner-name" title="<?php echo format_name($item['assigned_user']) ?>">
 							<?php 
 								if (!empty($item['assigned_user'])) {
@@ -105,8 +105,8 @@
 						</span>
 
 						<div class="assign-to-popup hide">
-							<a href="" class="close action toggler"><span class="replace">close</span></a>
-							<p class="popup-label">Assign to</p>
+							<a href="" class="close action toggler"><span class="replace"><?php echo lang('close'); ?></span></a>
+							<p class="popup-label"><?php echo lang('assign_to'); ?></p>
 							<ul class="assign-user-list">
 								<?php foreach($active_users as $u): ?>
 								<li class="<?php echo ($u->id == $item['assigned'])? 'assigned ' : ''?>user"><a rel="<?php echo $u->id?>" href=""><?php echo format_name($u) . ' (' . format_name_as_initials($u) . ')' ?></a></li>
@@ -120,7 +120,7 @@
 					</td>
 					<td class="message-status message-details-link">
 						<?php if($item['type'] == 'voice'): ?>
-						<span class="<?php echo $item['ticket_status'] ?>-status message-status-label"><span class="replace">Open</span></span>
+						<span class="<?php echo $item['ticket_status'] ?>-status message-status-label"><span class="replace"><?php echo lang('open'); ?></span></span>
 						<?php endif;?>
 					</td>
 					<td class="message-timestamp message-details-link">
@@ -135,15 +135,15 @@
 
 		<div class="vbx-content-menu vbx-content-menu-bottom">
 			<ul class="inbox-menu vbx-menu-items">
-				<li class="menu-item"><a href="" class="dropdown-select-button link-button"><span>Select</span></a>
+				<li class="menu-item"><a href="" class="dropdown-select-button link-button"><span><?php echo lang('select'); ?></span></a>
 					<ul class="hide">
-						<li><a class="select select-all" href="">Select All</a></li>
-						<li><a class="select select-none" href="">Select None</a></li>
-						<li><a class="select select-read" href="">Select Read</a></li>
-						<li><a class="select select-unread" href="">Select Unread</a></li>
+						<li><a class="select select-all" href=""><?php echo lang('select_all'); ?></a></li>
+						<li><a class="select select-none" href=""><?php echo lang('select_none'); ?></a></li>
+						<li><a class="select select-read" href=""><?php echo lang('select_read'); ?></a></li>
+						<li><a class="select select-unread" href=""><?php echo lang('select_unread'); ?></a></li>
 					</ul>
 				</li>
-				<li class="menu-item"><a href="" class="delete-button link-button"><span>Delete</span></a></li>
+				<li class="menu-item"><a href="" class="delete-button link-button"><span><?php echo lang('delete'); ?></span></a></li>
 			</ul><!-- .vbx-menu-items -->
 
 			<?php echo $pagination; ?>

@@ -1,21 +1,21 @@
 <div class="vbx-content-main">
 
 	<div class="vbx-content-menu vbx-content-menu-top">
-		<h2 class="vbx-content-heading">Voicemail</h2>
+		<h2 class="vbx-content-heading"><?php echo lang('voicemail'); ?></h2>
 	</div><!-- .vbx-content-menu -->
 
-	<div class="voicemail-blank <?php echo empty($voicemail_say) && empty($voicemail_play)? '' : 'hide' ?>">
-		<h2>Hey, you haven&rsquo;t setup your voicemail!</h2>
-		<p>Change your greeting to: read text, play an audio file, or record it from your phone.</p>
+	<div class="voicemail-blank <?php echo empty($voicemail_say) && empty($voicemail_play)? '' : lang('hide') ?>">
+		<h2><?php echo lang('voicemail_blank'); ?></h2>
+		<p><?php echo lang('voicemail_blank_description'); ?></p>
 	</div>	
 
 	<div class="vbx-content-container">
 		<div class="vbx-content-section">
 			<div class="vbx-form">
-				<h3>Voicemail</h3>
+				<h3><?php echo lang('voicemail'); ?></h3>
 				<div class="voicemail-container">
-					<div class="voicemail-icon standard-icon"><span class="replace">Voicemail</span></div>
-					<div class="voicemail-label">Greeting</div>
+					<div class="voicemail-icon standard-icon"><span class="replace"><?php echo lang('voicemail'); ?></span></div>
+					<div class="voicemail-label"><?php echo lang('greeting'); ?></div>
 					<div class="voicemail-picker">
 						<?php
 							 $widget = new AudioSpeechPickerWidget(

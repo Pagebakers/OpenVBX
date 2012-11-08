@@ -12,7 +12,7 @@
 				echo '<a class="back-link" href="'.$content_menu_url.'">&laquo; Back to Accounts</a>';
 			}
 		?>
-		<h2 class="vbx-content-heading">Edit Account</h2>
+		<h2 class="vbx-content-heading"><?php echo lang('account_edit'); ?></h2>
 	</div><!-- .vbx-content-menu -->
 
 	<div class="vbx-content-section">
@@ -29,36 +29,36 @@
 		<?php endif; ?>
 
 			<fieldset class="vbx-input-container">
-				<label class="field-label">First Name
+				<label class="field-label"><?php echo lang('first_name'); ?>
 					<input type="text" class="medium" name="first_name" value="<?php echo $user->first_name; ?>" />
 				</label>
-				<label class="field-label">Last Name
+				<label class="field-label"><?php echo lang('last_name'); ?>
 					<input type="text" class="medium" name="last_name" value="<?php echo $user->last_name; ?>" />
 				</label>
-				<label class="field-label">E-Mail Address
+				<label class="field-label"><?php echo lang('email'); ?>
 					<input type="text" class="medium" name="email" value="<?php echo $user->email; ?>" />
 				</label>
 			</fieldset>
 				
-			<button type="submit" class="inline-button submit-button"><span>Save</span></button>
-			<button type="button" class="change-password inline-button normal-button"><span>Change password</span></button>
+			<button type="submit" class="inline-button submit-button"><span><?php echo lang('save'); ?></span></button>
+			<button type="button" class="change-password inline-button normal-button"><span><?php echo lang('change_password'); ?></span></button>
 
 		</form>
 
 <?php if ($current_user->is_admin && $user->id != $current_user->id): ?>
 		<div id="user-meta" style="clear: both; margin-top: 75px">
-			<p>Only administrators see the information below</p>
+			<p><?php echo lang('administrators_notice'); ?></p>
 			<hr />
 			
-			<h3>Devices</h3>
+			<h3><?php echo lang('devices'); ?></h3>
 			
 			<table class="vbx-items-grid">
 				<thead>
 					<tr class="items-head">
-						<th>Device Name</th>
-						<th>Number</th>
-						<th>SMS</th>
-						<th>Active</th>
+						<th><?php echo lang('device_name'); ?></th>
+						<th><?php echo lang('number'); ?></th>
+						<th><?php echo lang('sms'); ?></th>
+						<th><?php echo lang('active'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -67,13 +67,13 @@
 						<tr class="items-row">
 							<td><?php echo $device->name; ?></td>
 							<td><?php echo $device->value; ?></td>
-							<td><?php echo ($device->sms ? 'active' : 'inactive'); ?></td>
-							<td><?php echo ($device->is_active ? 'active' : 'inactive'); ?></td>
+							<td><?php echo ($device->sms ? lang('active') : lang('inactive')); ?></td>
+							<td><?php echo ($device->is_active ? lang('active') : ('inactive')); ?></td>
 						</tr>
 					<?php endforeach; ?>
 				<?php else: /* count($user->devices) */ ?>
 					<tr class="items-row">
-						<td colspan="100">This user has no devices</td>
+						<td colspan="100"><?php echo lang('user_no_devices'); ?>This user has no devices</td>
 					</tr>
 				<?php endif; ?>
 				</tbody>
@@ -84,16 +84,16 @@
 	</div><!-- .vbx-content-section -->
 </div><!-- .vbx-content-main -->
 
-<form id="dialog-password" style="display: none;" class="dialog vbx-form" action="<?php echo site_url('account/password/'.$user->id); ?>" method="post" title="Change Password">
+<form id="dialog-password" style="display: none;" class="dialog vbx-form" action="<?php echo site_url('account/password/'.$user->id); ?>" method="post" title="<?php echo lang('change_password'); ?>">
 	<div class="hide error-message"></div>
 	<fieldset class="vbx-input-container">
-		<label class="field-label">Old Password
+		<label class="field-label"><?php echo lang('old_password'); ?>
 			<input type="password" class="medium" name="old_pw" />
 		</label>
-		<label class="field-label">New Password
+		<label class="field-label"><?php echo lang('new_password'); ?>
 			<input type="password" class="medium" name="new_pw1" />
 		</label>
-		<label class="field-label">Re-type New Password
+		<label class="field-label"><?php echo lang('retype_new_password'); ?>
 			<input type="password" class="medium" name="new_pw2" />
 		</label>
 	</fieldset>
